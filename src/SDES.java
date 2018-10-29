@@ -5,6 +5,10 @@ public class SDES {
 	private static final int[] key2Positions = {7, 2, 5, 4, 9, 1, 8, 0};
 	private static final int[] initialPerm = {1, 5, 2, 0, 3, 7, 4, 6};
 	private static final int[] invIP = {3, 0, 2, 4, 6, 1, 7, 5};
+	private static final int[] EP = {3,0,1,2,1,2,3,0};
+	private static final int[] P4 = {1,3,2,0};
+	private static final int[][] S0 = {{0,0,0},{0,0,0},{0,0,0}};
+	private static final int[][] S1 = {{0,0,0},{0,0,0},{0,0,0}};
 	
 	/**
 	 * Encrypts a string using SDES.
@@ -101,6 +105,28 @@ public class SDES {
 		bits = expPerm(bits, invIP);
 		
 		return bitArrayToByte(bits);
+	}
+
+	/**
+	 * @param x
+	 * @param k
+	 * @return
+	 * @author Warren Devonshire
+	 */
+	public boolean[] f(boolean[] x, boolean[] k){
+		return concat(xor(lh(x), feistel(k, rh(x))), rh(x));
+	}
+
+	/**
+	 * F(k,x) is a Feistel function F(k,x) = P4 (s0 (L (k xor EP(x))) || s1 (R (k xor EP(x)))
+	 * @param k
+	 * @param x
+	 * @return
+	 * @author Warren Devonshire
+	 */
+	public boolean[] feistel(boolean[] k, boolean[] x){
+		boolean[] kXorEP = xor(k, expPerm(x, EP));
+		return expPerm(concat(sBox(lh(kXorEP), S0), sBox(rh(kXorEP), S1)), P4);
 	}
 	
 	/**
