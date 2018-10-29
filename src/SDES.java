@@ -128,7 +128,18 @@ public class SDES {
 		boolean[] kXorEP = xor(k, expPerm(x, EP));
 		return expPerm(concat(sBox(lh(kXorEP), S0), sBox(rh(kXorEP), S1)), P4);
 	}
-	
+
+	/**
+	 *
+	 * @param x
+	 * @param s
+	 * @return
+	 * @author Warren Devonshire
+	 */
+	public boolean[] sBox(boolean[] x, int[][] s){
+		return new boolean[2];
+	}
+
 	/**
 	 * Print a bit array to the standard output.
 	 * @param inp the bit array to print
