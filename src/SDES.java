@@ -8,8 +8,16 @@ public class SDES {
 	private static final int[] invIP = {3, 0, 2, 4, 6, 1, 7, 5};
 	private static final int[] EP = {3,0,1,2,1,2,3,0};
 	private static final int[] P4 = {1,3,2,0};
-	private static final int[][] S0 = {{0,0,0},{0,0,0},{0,0,0}};
-	private static final int[][] S1 = {{0,0,0},{0,0,0},{0,0,0}};
+
+	private static final boolean[][][] S0 = {{{false,true}, {false,false},{true,true}, {true,false}},
+									         {{true,true},  {true,false}, {false,true},{false,false}},
+									         {{false,false},{true,false}, {false,true},{true,true}},
+										     {{true,true},  {false,true}, {true,true}, {true,false}}};
+
+	private static final boolean[][][] S1 = {{{false,false},{false,true}, {true,false}, {true,true}},
+									         {{true,false}, {false,false},{false,true}, {true,true}},
+									         {{true,true},  {false,false},{false,true}, {false,false}},
+									         {{true,false}, {false,true}, {false,false},{true,true}}};
 	boolean[] key = new boolean[10];
 
 	/**
@@ -132,14 +140,20 @@ public class SDES {
 	}
 
 	/**
-	 *
+	 * Utility function for performing s-box operation.
 	 * @param x
 	 * @param s
 	 * @return
 	 * @author Warren Devonshire
 	 */
-	public boolean[] sBox(boolean[] x, int[][] s){
-		return new boolean[2];
+	public boolean[] sBox(boolean[] x, boolean[][][] s){
+		int i = 0;//used for X0 and X3 Rows of SBox
+		int j = 0;//used for X1 and X2 Columns of Sbox
+		if(x[0]) i += 2;
+		if(x[3]) i++;
+		if(x[1]) j += 2;
+		if(x[2]) j++;
+		return s[i][j];
 	}
 
 	/**
