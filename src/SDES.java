@@ -335,6 +335,55 @@ public class SDES {
 		}
 		return combine;
 	}
+	
+	/**
+	 * 
+	 * @param inp takes boolean array of max size 8
+	 * @return byte
+	 * author Manoj George
+	 */
+	public byte bitArrayToByte(boolean[] inp)
+	{
+		String byteResult = "";
+		int[] hold = new int[8];
+		
+		if (inp.length > 8) {
+            System.exit(0);
+            
+        }
+        else {
+            int j = 7;
+            for (int i = inp.length-1; i >= 1; i--) {
+               if (inp[i] == true) { 
+                    hold[j] = 1;
+               }
+               j--;
+            }
+        }
+		for(int i = 0; i < hold.length; i++)
+		{
+			byteResult += hold[i];
+		}
+		
+		byte out = Byte.parseByte(byteResult,2);
+		if(inp[0] == true)
+		{
+			int tmp = out;
+			int pow = (int) Math.pow(2, inp.length);
+			tmp -= pow;
+			out = (byte)tmp;
+			
+		}
+		
+		return new Byte(out);
+	}
+	
+	public boolean[] byteToBitArray(byte b, int size)
+	{
+		
+		
+		return null;
+	}
 
 
 }
