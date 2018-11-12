@@ -273,7 +273,7 @@ public class SDES {
 
 		int rs = inp.length/2;
 		boolean[] half = new boolean[rs];
-		for(int i= 0,j = rs; i < inp.length; i++, j++)
+		for(int i= 0,j = rs; j < inp.length; i++, j++)
 		{
 			half[i] = inp[j];
 		}
@@ -329,7 +329,7 @@ public class SDES {
 
 		int cnt = x.length;
 
-		for(int i = 0; i < combine.length; i++, cnt++)
+		for(int i = 0; i < y.length; i++, cnt++)
 		{
 			combine[cnt] = y[i];
 		}
