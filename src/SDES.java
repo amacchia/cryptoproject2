@@ -146,7 +146,7 @@ public class SDES {
 	 * @return
 	 * @author Warren Devonshire
 	 */
-	public boolean[] sBox(boolean[] x, boolean[][][] s){
+	private boolean[] sBox(boolean[] x, boolean[][][] s){
 		int i = 0;//used for X0 and X3 Rows of SBox
 		int j = 0;//used for X1 and X2 Columns of Sbox
 		if(x[0]) i += 2;
