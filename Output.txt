@@ -1,0 +1,34 @@
+Please enter your key a single bit at a time:
+0
+1
+1
+1
+1
+1
+1
+1
+0
+1
+Byte array of cipher text:
+-115-17-47-113-43-471584-43-113-1784-4379581564-113-4365-471278464-43-6179-4393-61-1415-43-11384-47127-43127841271084156443
+Decrpyted Cipher Text:
+What are the first names of your team members?
+Answer: Anthony, Manoj, and Warren
+
+Encrpyted Message:
+7184-86-86-61-43-115-6115-86-124
+Decrpyted Message:
+Hello World
+
+Encrpyted Message2:
+-45-47-113-17-435864-4379-1465-27
+Decrpyted Message2:
+Math is fun!
+
+Encrpyted Message3:
+1151593-54-113-61-10215-47-54-1793-435864-43-33-61-61-86-27
+Decrpyted Message3:
+Cryptography is cool!
+
+Show bit array: 
+01101001
